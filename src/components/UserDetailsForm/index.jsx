@@ -1,10 +1,10 @@
-import {Component} from 'react'
-import {MdOutlineErrorOutline} from 'react-icons/md'
-import './index.css'
-import BookingContext from '../../context/BookingContext'
+import { Component } from "react";
+import { MdOutlineErrorOutline } from "react-icons/md";
+import "./index.css";
+import BookingContext from "../../context/BookingContext";
 
 class UserDetailsForm extends Component {
-  bookingContext = this.context
+  bookingContext = this.context;
 
   state = {
     name: this.bookingContext.name,
@@ -13,48 +13,44 @@ class UserDetailsForm extends Component {
     showNameErrMsg: false,
     showStartLocationErrMsg: false,
     showEndtLocationErrMsg: false,
-  }
+  };
 
-  handleChange = e => {
-    const {name, value} = e.target
+  handleChange = (e) => {
+    const { name, value } = e.target;
     switch (name) {
-      case 'name':
-        this.setState({[name]: value, showNameErrMsg: false})
-        break
-      case 'startLocation':
-        this.setState({[name]: value, showStartLocationErrMsg: false})
-        break
-      case 'endLocation':
-        this.setState({[name]: value, showEndtLocationErrMsg: false})
-        break
+      case "name":
+        this.setState({ [name]: value, showNameErrMsg: false });
+        break;
+      case "startLocation":
+        this.setState({ [name]: value, showStartLocationErrMsg: false });
+        break;
+      case "endLocation":
+        this.setState({ [name]: value, showEndtLocationErrMsg: false });
+        break;
       default:
-        break
+        break;
     }
-  }
+  };
 
-  handleSubmit = e => {
-    e.preventDefault()
-    const {name, startLocation, endLocation} = this.state
-    if (name === '') {
-      this.setState({showNameErrMsg: true})
-    } else if (startLocation === '') {
-      this.setState({showStartLocationErrMsg: true})
-    } else if (endLocation === '') {
-      this.setState({showEndtLocationErrMsg: true})
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, startLocation, endLocation } = this.state;
+    if (name === "") {
+      this.setState({ showNameErrMsg: true });
+    } else if (startLocation === "") {
+      this.setState({ showStartLocationErrMsg: true });
+    } else if (endLocation === "") {
+      this.setState({ showEndtLocationErrMsg: true });
     } else {
-      const bookingContext = this.context
-      const {
-        setName,
-        setStartLocation,
-        setEndLocation,
-        setActiveFormId,
-      } = bookingContext
-      setName(name)
-      setStartLocation(startLocation)
-      setEndLocation(endLocation)
-      setActiveFormId('DATE_SELECTION')
+      const bookingContext = this.context;
+      const { setName, setStartLocation, setEndLocation, setActiveFormId } =
+        bookingContext;
+      setName(name);
+      setStartLocation(startLocation);
+      setEndLocation(endLocation);
+      setActiveFormId("DATE_SELECTION");
     }
-  }
+  };
 
   render() {
     const {
@@ -64,16 +60,16 @@ class UserDetailsForm extends Component {
       showNameErrMsg,
       showStartLocationErrMsg,
       showEndtLocationErrMsg,
-    } = this.state
+    } = this.state;
     const nameInputErrorViewClassName = showNameErrMsg
-      ? 'user-details-input-feilds-inputs-container-error-view'
-      : ''
+      ? "user-details-input-feilds-inputs-container-error-view"
+      : "";
     const startLocationInputErrorViewClassName = showStartLocationErrMsg
-      ? 'user-details-input-feilds-inputs-container-error-view'
-      : ''
+      ? "user-details-input-feilds-inputs-container-error-view"
+      : "";
     const endLocationInputErrorViewClassName = showEndtLocationErrMsg
-      ? 'user-details-input-feilds-inputs-container-error-view'
-      : ''
+      ? "user-details-input-feilds-inputs-container-error-view"
+      : "";
     return (
       <div className="user-details-form-container">
         <h1 className="your-details-h1">Your Details</h1>
@@ -169,9 +165,9 @@ class UserDetailsForm extends Component {
           </button>
         </form>
       </div>
-    )
+    );
   }
 }
 
-UserDetailsForm.contextType = BookingContext
-export default UserDetailsForm
+UserDetailsForm.contextType = BookingContext;
+export default UserDetailsForm;

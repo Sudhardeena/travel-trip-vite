@@ -1,14 +1,14 @@
-import {Link, useNavigate } from 'react-router-dom'
-import Cookies from 'js-cookie'
-import './index.css'
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import "./index.css";
 
 const DesktopViewNavbar = () => {
   const navigate = useNavigate();
 
   const onClickLogout = () => {
-    Cookies.remove('jwt_token') 
-    navigate('/login', {replace:true})
-  }
+    Cookies.remove("jwt_token");
+    navigate("/login", { replace: true });
+  };
 
   return (
     <div className="desktop-navbar-container">
@@ -34,7 +34,7 @@ const DesktopViewNavbar = () => {
         Logout
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default DesktopViewNavbar
+export default DesktopViewNavbar;
